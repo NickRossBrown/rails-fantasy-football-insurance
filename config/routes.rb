@@ -1,3 +1,10 @@
 Rails.application.routes.draw do
-  resources :foods
+
+  root :to => 'foods#index'
+
+  resources :foods do
+    resources :reviews
+  end
+
+
 end
