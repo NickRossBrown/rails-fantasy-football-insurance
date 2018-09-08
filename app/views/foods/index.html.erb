@@ -5,6 +5,13 @@
   <% end %>
 </ul>
 
+<ul>
+  <% @foods.each do |food| %>
+    <button class="btn btn-primary"><li><%= link_to food.name, food_path(food) %></li></button>
+    <br>
+  <% end %>
+</ul>
+
 
 <hr>
 
