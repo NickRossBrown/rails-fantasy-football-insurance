@@ -1,12 +1,12 @@
-class TasksController < ApplicationController
+class ReviewsController < ApplicationController
   def new
     binding.pry
-    @food = List.find(params[:food_id])
+    @food = Food.find(params[:food_id])
     @review = @food.reviews.new
   end
 
   def create
-    @food = List.find(params[:food_id])
+    @food = Food.find(params[:food_id])
     @review = @food.reviews.new(review_params)
     if @review.save
       redirect_to food_path(@review.food)
@@ -17,7 +17,7 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    @food = List.find(params[:food_id])
+    @food = Food.find(params[:food_id])
     @review = @food.reviews.find(params[:id])
     @review.destroy
     flash[:notice] = "Task successfully destroyed!"
@@ -25,12 +25,12 @@ class TasksController < ApplicationController
   end
 
   def edit
-    @food = List.find(params[:food_id])
+    @food = Food.find(params[:food_id])
     @review = @food.reviews.find(params[:id])
   end
 
   def update
-    @food = List.find(params[:food_id])
+    @food = Food.find(params[:food_id])
     @review = @food.reviews.find(params[:id])
     if @review.update(review_params)
       flash[:notice] = "Task successfully updated!"
