@@ -21,6 +21,7 @@ class FoodsController < ApplicationController
   else
     render :new
   end
+
   end
 
   def edit
@@ -46,7 +47,7 @@ class FoodsController < ApplicationController
 
   private
   def food_params
-    params.require(:food).permit(:name, :author, :description)
+    params.require(:food).permit(:name, :description)
   end
 
 end
