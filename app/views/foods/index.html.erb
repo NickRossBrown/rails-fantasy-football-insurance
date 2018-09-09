@@ -1,18 +1,14 @@
+<% content_for(:title, "Food-Index") %>
 <h1>Foods</h1>
- <ul>
-  <% @foods.each do |foo| %>
-    <li><%= foo.name %></li>
-  <% end %>
-</ul>
 
-<ul>
-  <% @foods.each do |food| %>
-    <button class="btn btn-primary"><li><%= link_to food.name, food_path(food) %></li></button>
+<div class="card">
+    <% @foods.each do |food| %>
+    <button class="btn btn-info"><li><%= link_to food.name, food_path(food) %></li></button>
     <br>
-  <% end %>
-</ul>
-
+    <% end %>
+</div>
 
 <hr>
-
-<button class="btn btn-warning"> <%= link_to "New Food", new_food_path %></button>
+<div class="return">
+    <button class="btn btn-warning"> <%= link_to "New Food", new_food_path %></button>
+</div>

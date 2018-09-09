@@ -1,30 +1,32 @@
 <% content_for(:title, "Food-Show") %>
-<h1><%= @food.name %></h1>
 
 <% if @food.reviews.any? %>
-  <h3>Here are the reviews for this food:</h4>
-      <ul>
-        <% @food.reviews.each do |review| %>
-          <li><%= review.description %>
-          <li><%= review.user_rating %>
-          <%= review.featured %>
-          <%= review.user %>
-
-          <button class="btn btn-success"><%= link_to "Edit", edit_food_review_path(@food, review) %></button>
-          <button class="btn btn-danger"><%= link_to "Delete", food_review_path(@food, review),
-                                   :data => {:confirm => "Are you sure?",
-                                                    :method => "delete"} %></button>
-          </li>
+    <h3>Here are the reviews for -> <%= @food.name %>:</h4>
+    <% @food.reviews.each do |review| %>
+          <hr>
+          <div class="card">
+              <h3><%= review.user_rating %> Stars </h3>
+              <hr>
+              <h5><%= review.description %> </h5>
+              <hr>
+              <%= review.featured %>
+              <%= review.user %>
+              <button class="btn btn-success"><%= link_to "Edit", edit_food_review_path(@food, review) %></button>
+              <button class="btn btn-danger"><%= link_to "Delete", food_review_path(@food, review),
+                                       :data => {:confirm => "Are you sure?",
+                                                        :method => "delete"} %></button>
+          </div>
         <% end %>
-      </ul>
     <% else %>
     <p>There are no reviews yet!</p>
 <% end %>
 
+<hr>
+<hr>
+<div class="return">
 <p><%= link_to "Leave a Review", new_food_review_path(@food) %></p>
 <p><%= link_to "Delete List", food_path(@food),
                         :data => {:confirm => "Are you sure?",
                                        :method => "delete"} %></p>
-
-
 <button class="btn btn-info"><p><%= link_to "Return to foods", foods_path %></p></button>
+</div>

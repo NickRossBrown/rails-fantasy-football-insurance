@@ -2,6 +2,38 @@
 @import "bootstrap";
 
 body {
-  background-color: rgb(200, 200, 245);
-  font-family: sans-serif;
+    background-color: rgb(200, 200, 245);
+    font-family: sans-serif;
 }
+.card {
+    background-color: lightblue;
+    outline-style: double;
+    text-align: center;
+    align-items: center;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+ul {
+    align-items: center;
+    list-style-image: url("add-list-sm.png");
+}
+li {
+    list-style-type: square;
+    // list-style-image: url("add-list-sm.png");
+    margin-top: 20px;
+}
+h1 {
+    text-align: center;
+}
+ h3 {
+     text-align: center;
+ }
+ .return {
+     background-color: lightgreen;
+     outline-style: dotted;
+     text-align: center;
+     align-items: center;
+     margin-bottom: 200px;
+
+ }
