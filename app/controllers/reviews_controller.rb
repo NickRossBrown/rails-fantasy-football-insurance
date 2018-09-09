@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
+
   def new
-    binding.pry
     @food = Food.find(params[:food_id])
     @review = @food.reviews.new
   end
@@ -32,6 +32,7 @@ class ReviewsController < ApplicationController
   def update
     @food = Food.find(params[:food_id])
     @review = @food.reviews.find(params[:id])
+    # binding.pry
     if @review.update(review_params)
       flash[:notice] = "Task successfully updated!"
       redirect_to food_path(@review.food)
@@ -42,7 +43,7 @@ class ReviewsController < ApplicationController
 
 private
   def review_params
-    params.require(:review).permit(:description)
+    params.require(:review).permit(:description,:featured, :user_rating)
   end
 
 end
