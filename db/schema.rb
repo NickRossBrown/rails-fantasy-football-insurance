@@ -15,9 +15,6 @@ ActiveRecord::Schema.define(version: 2018_09_08_033645) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "players", force: :cascade do |t|
-  end
-
   create_table "reviews", force: :cascade do |t|
     t.string "user"
     t.string "description"
