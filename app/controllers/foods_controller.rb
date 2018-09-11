@@ -1,4 +1,5 @@
 class FoodsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
 
   def index
     @foods = Food.all
@@ -10,18 +11,20 @@ class FoodsController < ApplicationController
   end
 
   def new
-   @food = Food.new
+   @food = current_user.foods.build
   end
 
   def create
-  @food = Food.new(food_params)
-  if @food.save
-    flash[:notice] = "Food successfully added!"
-    redirect_to  foods_path
-  else
-    render :new
-  end
-
+    @food = current_user.foods.build(food_params)
+respond_to do |format|
+      if @food.save
+        format.html { redirect_to @food, notice: 'food was successfully created.' }
+        format.json { render :show, status: :created, location: @food }
+      else
+        format.html { render :new }
+        format.json { render json: @food.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def edit
