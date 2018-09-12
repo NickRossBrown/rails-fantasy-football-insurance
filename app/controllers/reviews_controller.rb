@@ -10,7 +10,7 @@ class ReviewsController < ApplicationController
     @review = @food.reviews.new(review_params)
     if @review.save
       redirect_to food_path(@review.food)
-      flash[:notice] = "Task successfully added!"
+      flash[:notice] = "Review successfully added!"
     else
       render :new
     end
@@ -20,7 +20,7 @@ class ReviewsController < ApplicationController
     @food = Food.find(params[:food_id])
     @review = @food.reviews.find(params[:id])
     @review.destroy
-    flash[:notice] = "Task successfully destroyed!"
+    flash[:notice] = "Review successfully destroyed!"
     redirect_to food_path(@review.food)
   end
 
@@ -34,7 +34,7 @@ class ReviewsController < ApplicationController
     @review = @food.reviews.find(params[:id])
     # binding.pry
     if @review.update(review_params)
-      flash[:notice] = "Task successfully updated!"
+      flash[:notice] = "Review successfully updated!"
       redirect_to food_path(@review.food)
     else
       render :edit

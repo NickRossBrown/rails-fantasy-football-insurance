@@ -10,16 +10,28 @@
   </head>
 
   <body>
-    <% if user_signed_in? %>
-     <h3><%= link_to 'Add Food Item', new_food_path %></h3>
-     <h3><%= link_to 'Account', edit_user_registration_path %></h3>
-     <h3><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></h3>
-
-   <% else %>
-     <h3><%= link_to 'Sign up', new_user_registration_path%></h3>
-     <h3><%= link_to 'Sign in', new_user_session_path %></h3>
-
-   <% end %>
+    <header class="navbar navbar-default" role="navigation">
+      <div class="navbar-inner">
+        <div class="container">
+          <div id="logo" class="navbar-brand"><h2><%= link_to "Food Store", root_path %></h2></div>
+          <nav class="collapse navbar-collapse navbar-ex1-collapse">
+            <% if user_signed_in? -%>
+              <ul class="nav navbar-nav navbar-right">
+                <li><%= link_to 'Add Food Item', new_food_path %></li>
+                <li><%= link_to 'Account', edit_user_registration_path %></li>
+                <li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
+          
+              </ul>
+            <% else -%>
+              <ul class="nav navbar-nav pull-right">
+                <li><%= link_to 'Sign up', new_user_registration_path%></li>
+                <li><%= link_to 'Sign in', new_user_session_path %></li>
+              </ul>
+            <% end -%>
+          </nav>
+        </div>
+      </div>
+    </header>
     <%= flash[:alert] %>
     <%= flash[:notice] %>
     <%= yield %>
