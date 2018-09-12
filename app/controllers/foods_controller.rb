@@ -7,6 +7,7 @@ class FoodsController < ApplicationController
   end
 
   def show
+    # binding.pry
    @food = Food.find(params[:id])
   end
 
@@ -16,7 +17,7 @@ class FoodsController < ApplicationController
 
   def create
     @food = current_user.foods.build(food_params)
-respond_to do |format|
+    respond_to do |format|
       if @food.save
         format.html { redirect_to @food, notice: 'food was successfully created.' }
         format.json { render :show, status: :created, location: @food }
