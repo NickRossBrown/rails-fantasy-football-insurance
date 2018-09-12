@@ -1,7 +1,7 @@
 <% content_for(:title, "Food-Show") %>
 
 <% if @food.reviews.any? %>
-    <h3>Here are the reviews for -> <%= @food.name %>:</h4>
+    <h3>Here are the reviews for -> <%= @food.name %>:</h3>
     <% @food.reviews.each do |review| %>
           <hr>
           <div class="card">
@@ -28,9 +28,11 @@
 <hr>
 <hr>
 <div class="return">
-<p><%= link_to "Leave a Review", new_food_review_path(@food) %></p>
-<p><%= link_to "Delete List", food_path(@food),
-                        :data => {:confirm => "Are you sure?",
-                                       :method => "delete"} %></p>
-<button class="btn btn-info"><p><%= link_to "Return to foods", foods_path %></p></button>
+    <p><%= link_to "Leave a Review", new_food_review_path(@food) %></p>
+    <% if @food.user == current_user %>
+        <p><%= link_to "Delete List", food_path(@food),
+                                :data => {:confirm => "Are you sure?",
+                                            :method => "delete"} %></p>
+    <% end %>                                       
+    <button class="btn btn-info"><p><%= link_to "Return to foods", foods_path %></p></button>
 </div>

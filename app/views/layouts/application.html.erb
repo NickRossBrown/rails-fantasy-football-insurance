@@ -20,7 +20,8 @@
      <h3><%= link_to 'Sign in', new_user_session_path %></h3>
 
    <% end %>
-
+    <%= flash[:alert] %>
+    <%= flash[:notice] %>
     <%= yield %>
     <%= flash[:alert] %>
     <%= flash[:notice] %>
