@@ -3,7 +3,6 @@ class FoodsController < ApplicationController
 
   def index
     @foods = Food.all
-    render :index
   end
 
   def show
@@ -51,7 +50,7 @@ class FoodsController < ApplicationController
 
   private
   def food_params
-    params.require(:food).permit(:name, :description)
+    params.require(:food).permit(:name, :description, :image, :location, :price)
   end
 
 end

@@ -5,3 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+  [0..100].each do |i|
+    # @user = User.create(:name => "name#{i}", etc...)
+    @user = User.new
+    @user.email = 'test#{i}@example.com'
+    @user.password = '#{i}aaaaaa'
+    @user.save!
+    @food = @user.foods.build(:name => "#{i}aaa")
+
+    end

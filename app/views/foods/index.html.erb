@@ -3,8 +3,20 @@
 
 <div class="card">
     <% @foods.each do |food| %>
-
     <h3 class="btn-info"><%= link_to food.name, food_path(food) %></h3>
+    <% if food.image.attached? %>
+        <p>
+            <strong>Image:</strong>
+            <br>
+            <%= image_tag food.image %>
+        </p>
+    <%end%>
+    <% if food.location %>
+        <p><strong>From: <%= food.location %></strong></p>
+    <%end%>
+    <% if food.price %>
+        <p><strong>Price $<%= food.price %></strong></p>
+    <%end%>
   
     <% if food.user == current_user %>
         <h5><%= link_to 'Edit', edit_food_path(food) %></h5>

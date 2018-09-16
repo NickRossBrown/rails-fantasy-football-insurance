@@ -2,6 +2,19 @@
 
 <% if @food.reviews.any? %>
     <h3>Here are the reviews for -> <%= @food.name %>:</h3>
+     <% if @food.image.attached? %>
+        <p><strong>Image:</strong>
+            <br>
+            <%= image_tag @food.image %>
+        </p>
+    <%end%>
+    <% if @food.location %>
+        <p><strong>From: <%= @food.location %></strong></p>
+    <%end%>
+    <% if @food.price %>
+        <p><strong>Price $<%= @food.price %></strong></p>
+    <%end%>
+
     <% @food.reviews.each do |review| %>
           <hr>
           <div class="card">
