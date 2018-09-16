@@ -48,3 +48,28 @@
                                             :method => "delete"} %></p>
     <% end %>                                       
 </div>
+<h3>Here are all the reviews for -> <%= @food.name %>:</h3>
+<% if @food.reviews.any? %>
+<% @food.reviews.each do |review| %>
+          <hr>
+          <div class="card">
+              <h3><%= review.user_rating %> Stars </h3>
+              <hr>
+              <h5><%= review.description %> </h5>
+              <hr>
+              <%= review.featured %>
+              <%= review.user %>
+              <% if @food.user == current_user %>
+                <button class="btn btn-success"><%= link_to "Edit", edit_food_review_path(@food, review) %></button>
+
+                <button class="btn btn-danger"><%= link_to "Delete", food_review_path(@food, review),
+                                        :data => {:confirm => "Are you sure?",
+                                                            :method => "delete"} %></button>
+             <% end %>
+      
+          </div>
+        <% end %>
+    <% else %>
+    <p>There are no reviews yet!</p>
+<% end %>
+<br>

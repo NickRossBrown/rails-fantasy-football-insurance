@@ -2,6 +2,19 @@
 <h1>Foods</h1>
 
 <div class="card">
+ <h1>Here are the Foods with the Most Reviews</h1>
+    <% @foods.most_reviews.each do |food| %>
+    <h3 class="btn-info"><%= link_to food.name, food_path(food) %></h3>
+    <% if food.image.attached? %>
+        <p>
+            <strong>Image:</strong>
+            <br>
+            <%= image_tag food.image %>
+        </p>
+    <%end%>
+    <% end %>
+
+    <h1><strong>Here all the are the Foods</strong></h1>
     <% @foods.each do |food| %>
     <h3 class="btn-info"><%= link_to food.name, food_path(food) %></h3>
     <% if food.image.attached? %>
@@ -24,6 +37,7 @@
         <% end %>
         <hr>
     <% end %>
+
 </div>
 
 <hr>
