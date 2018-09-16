@@ -1,7 +1,7 @@
 <% content_for(:title, "Food-Show") %>
 
 <% if @food.reviews.any? %>
-    <h3>Here are the reviews for -> <%= @food.name %>:</h3>
+    <h3>Here are the five most recent reviews for -> <%= @food.name %>:</h3>
      <% if @food.image.attached? %>
         <p><strong>Image:</strong>
             <br>
@@ -15,7 +15,7 @@
         <p><strong>Price $<%= @food.price %></strong></p>
     <%end%>
 
-    <% @food.reviews.each do |review| %>
+    <% @food.reviews.five_most_recent.each do |review| %>
           <hr>
           <div class="card">
               <h3><%= review.user_rating %> Stars </h3>
