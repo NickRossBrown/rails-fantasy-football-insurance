@@ -11,7 +11,7 @@ class FoodsController < ApplicationController
   end
 
   def new
-   @food = current_user.foods.build
+   @food = current_user.foods.new
   end
 
   def create
