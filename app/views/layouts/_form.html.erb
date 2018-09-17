@@ -4,21 +4,34 @@
 
 <div class="formField">
   <%= f.label :name %>
+  <br>
   <%= f.text_field :name %>
 </div>
 
 <div class="formField">
   <%= f.label :price %>
+  <br>
   <%= f.select :price, options_for_select([["Pick A Price", ""], ["$ ", 1], ["$$", 2], ["$$$",3],  ["$$$$",4],  ["$$$$$", 5]]), :class => 'form_dropBox' %> 
 </div>
 
 <div class="formField">
   <%= f.label :location %>
+  <br>
   <%= f.select :location, options_for_select([["Where is the food grown?", ""], ["USA", "United States"], ["Mexico", "Mexico"],["Mauritania","I Don't remember"]]), :class => 'form_dropBox' %> 
 </div>
-  <%= f.submit %>
-  <div class="field">
+
+<div class="formField">
+  <%= f.label :feature? %>
+  <br>
+  <%= f.check_box :featured %>
+</div>
+<div class="formField">
     <%= f.label :image %>
+    <br>
     <%= f.file_field :image %>
 </div>
+<div class="field">
+    <%= f.submit %>
+</div>
+
 <% end %>

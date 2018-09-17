@@ -47,11 +47,21 @@ h2 {
 
 .field {
     text-align: center;
+    align-items: center;
+    align-self: center;
+}
+.formField {
+    text-align: center;
 }
 .center {
     text-align: center;
 }
 
+#food_image {
+    text-align: center;
+    align-items: center;
+    align-self: center;
+}
 .picture {
     width: 100px;
     outline-style: double;

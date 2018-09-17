@@ -6,6 +6,10 @@ class Food < ActiveRecord::Base
   belongs_to :user
   has_one_attached :image
 
+  scope(:featured_foods, -> do
+    where({:featured => true})
+  end)
+
   scope :most_reviews, -> {(
     select("foods.id, foods.name, foods.description, count(reviews.id) as reviews_count")
     .joins(:reviews)

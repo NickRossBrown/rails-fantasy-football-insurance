@@ -1,7 +1,14 @@
 <% content_for(:title, "Food-Index") %>
 <h1>Foods</h1>
 
-<div class="card">
+<div class="card">s
+<h1>Here are the Featured Foods</h1>
+    <% @foods.featured_foods.each do |food| %>
+    <h3 class="btn-info"><%= link_to food.name, food_path(food) %></h3>
+    <p><strong>From: <%= food.location %></strong></p>
+    <p><strong>Price $<%= food.price %></strong></p>
+    <% end %>
+
  <h1>Here are the Foods with the Most Reviews</h1>
     <% @foods.most_reviews.each do |food| %>
     <h3 class="btn-info"><%= link_to food.name, food_path(food) %></h3>
