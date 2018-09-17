@@ -1,5 +1,7 @@
 class Food < ActiveRecord::Base
   validates :name, :presence => true
+  validates :price, :presence => true
+  validates :location, :presence => true
   has_many :reviews
   belongs_to :user
   has_one_attached :image
@@ -11,4 +13,6 @@ class Food < ActiveRecord::Base
     .order("reviews_count DESC")
     .limit(10)
     )}
+
+    
 end
